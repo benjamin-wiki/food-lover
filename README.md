@@ -1,2 +1,2 @@
-# food-lover
+# food lover 🥘 
 A recipe app... how original
