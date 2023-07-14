@@ -6,6 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RecipeApi.Data;
 using RecipeApi.Models;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +20,24 @@ builder.Services.AddDbContext<RecipeContext>(options =>
 // Add Identity services
 builder.Services.AddDefaultIdentity<User>()
     .AddEntityFrameworkStores<RecipeContext>();
+
+builder.Services.AddAuthentication(opt => 
+{
+    opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options => 
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration.GetSection("JwtSettings:Secret").Value)),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ClockSkew = TimeSpan.Zero
+    };
+});
 
 // Configure the HTTP request pipeline.
 var app = builder.Build();
@@ -33,6 +54,7 @@ app.UseRouting();
 
 // Use Identity
 app.UseAuthentication();
+app.UseJwtMiddleware();
 app.UseAuthorization();
 
 app.MapControllers();
