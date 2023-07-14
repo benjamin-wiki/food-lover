@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using RecipeApi.models;
+using RecipeApi.Models;
 
 namespace RecipeApi.Data
 {

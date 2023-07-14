@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/benja/webapps/RecipeApi/RecipeApi.csproj": {}
+    "/Users/benja/webapps/food-lover/RecipeApi/RecipeApi.csproj": {}
   },
   "projects": {
-    "/Users/benja/webapps/RecipeApi/RecipeApi.csproj": {
+    "/Users/benja/webapps/food-lover/RecipeApi/RecipeApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/benja/webapps/RecipeApi/RecipeApi.csproj",
+        "projectUniqueName": "/Users/benja/webapps/food-lover/RecipeApi/RecipeApi.csproj",
         "projectName": "RecipeApi",
-        "projectPath": "/Users/benja/webapps/RecipeApi/RecipeApi.csproj",
+        "projectPath": "/Users/benja/webapps/food-lover/RecipeApi/RecipeApi.csproj",
         "packagesPath": "/Users/benja/.nuget/packages/",
-        "outputPath": "/Users/benja/webapps/RecipeApi/obj/",
+        "outputPath": "/Users/benja/webapps/food-lover/RecipeApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/benja/.nuget/NuGet/NuGet.Config"
@@ -39,11 +39,17 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.9, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.9, )"
             },
