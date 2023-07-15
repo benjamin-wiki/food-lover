@@ -77,3 +77,10 @@
 /Users/benja/webapps/food-lover/RecipeApi/bin/Debug/net7.0/Microsoft.Extensions.Identity.Core.dll
 /Users/benja/webapps/food-lover/RecipeApi/bin/Debug/net7.0/Microsoft.Extensions.Identity.Stores.dll
 /Users/benja/webapps/food-lover/RecipeApi/bin/Debug/net7.0/Microsoft.Extensions.Options.dll
+/Users/benja/webapps/food-lover/RecipeApi/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/benja/webapps/food-lover/RecipeApi/bin/Debug/net7.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/benja/webapps/food-lover/RecipeApi/bin/Debug/net7.0/Microsoft.IdentityModel.Logging.dll
+/Users/benja/webapps/food-lover/RecipeApi/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.dll
+/Users/benja/webapps/food-lover/RecipeApi/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/benja/webapps/food-lover/RecipeApi/bin/Debug/net7.0/Microsoft.IdentityModel.Tokens.dll
+/Users/benja/webapps/food-lover/RecipeApi/bin/Debug/net7.0/System.IdentityModel.Tokens.Jwt.dll
