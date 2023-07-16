@@ -27,7 +27,7 @@ public class JwtMiddleware
         await _next(context);
     }
 
-    private void AttachUserToContext(HttpContext context, UserManager<User> userManager, string token)
+    private async void AttachUserToContext(HttpContext context, UserManager<User> userManager, string token)
     {
         try
         {
@@ -37,7 +37,7 @@ public class JwtMiddleware
             var username = jwtToken.Claims.First(x => x.Type == ClaimTypes.Name).Value;
 
             // attach user to context on successful jwt validation
-            context.Items["User"] = userManager.FindByNameAsync(username).Result;
+            context.Items["User"] = await userManager.FindByNameAsync(username);
         }
         catch
         {

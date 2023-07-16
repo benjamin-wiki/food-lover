@@ -52,9 +52,9 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
-// Use Identity
-app.UseAuthentication();
 app.UseJwtMiddleware();
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

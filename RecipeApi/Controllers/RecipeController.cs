@@ -23,21 +23,38 @@ public class RecipeController : ControllerBase
         _userManager = userManager;
     }
 
+    // [HttpGet]
+    // public async Task<ActionResult<IEnumerable<Recipe>>> Get()
+    // {
+    //     return await _context.Recipes.Include(r => r.User).ToListAsync();
+    // }
+
+    // [HttpGet("{id}")]
+    // public async Task<ActionResult<Recipe>> Get(int id)
+    // {
+    //     var recipe = await _context.Recipes.Include(r => r.User).FirstOrDefaultAsync(r => r.Id == id);
+
+    //     if (recipe == null)
+    //         return NotFound();
+
+    //     return recipe;
+    // }
+
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Recipe>>> Get()
+    public IEnumerable<Recipe> Get()
     {
-        return await _context.Recipes.Include(r => r.User).ToListAsync();
+        return _context.Recipes.Include(r => r.User).ToList();
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Recipe>> Get(int id)
+    public async Task<IActionResult> Get(int id)
     {
         var recipe = await _context.Recipes.Include(r => r.User).FirstOrDefaultAsync(r => r.Id == id);
 
         if (recipe == null)
             return NotFound();
 
-        return recipe;
+        return Ok(recipe);
     }
 
     [HttpPost]
@@ -45,6 +62,8 @@ public class RecipeController : ControllerBase
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
+
+        Console.WriteLine(User.Identity.Name);
 
         var recipe = new Recipe 
         {

@@ -14,7 +14,7 @@ namespace RecipeApi.Models
 
         public string? Preference { get; set; }
 
-        public ICollection<Recipe> Recipes { get; set; }  // Changed from List<Recipe> to ICollection<Recipe>
+        public ICollection<Recipe> Recipes { get; set; }
 
         // A method to set (and hash) the password
         public void SetPassword(string password)
