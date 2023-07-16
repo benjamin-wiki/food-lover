@@ -8,17 +8,17 @@ namespace RecipeApi.Models
 		public int Id { get; set; }
 
 		[Required]
-		public string Title { get; set; }
+		public string? Title { get; set; }
 
 		[Required]
-		public string Ingredients { get; set; }
+		public string? Ingredients { get; set; }
 
 		[Required]
-		public string Instructions { get; set; }
+		public string? Instructions { get; set; }
 
-		public int UserId { get; set; }
+		public string? UserId { get; set; }  // Changed from int to string
 
 		[ForeignKey("UserId")]
-		public User User { get; set; }
+		public User? User { get; set; }
 	}
 }

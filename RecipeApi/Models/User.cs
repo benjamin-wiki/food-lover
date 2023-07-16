@@ -1,21 +1,33 @@
-using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace RecipeApi.Models
 {
-	public class User
-	{
-		public int Id { get; set; }
+    public class User : IdentityUser
+    {
+        public User()
+        {
+            Preference = string.Empty;
+            Recipes = new List<Recipe>();
+        }
 
-		[Required]
-		public string Username { get; set; }
+        public string? Preference { get; set; }
 
-		[Required]
-		// todo: Hash, never store passwords in plain text
-		public string Password { get; set; }
+        public ICollection<Recipe> Recipes { get; set; }
 
-		public string Preference { get; set; }
+        // A method to set (and hash) the password
+        public void SetPassword(string password)
+        {
+            PasswordHasher<User> hasher = new PasswordHasher<User>();
+            this.PasswordHash = hasher.HashPassword(this, password);
+        }
 
-		public List<Recipe> Recipes { get; set; }
-	}
+        public bool CheckPassword(string passwordToCheck)
+        {
+            PasswordHasher<User> hasher = new PasswordHasher<User>();
+            var result = hasher.VerifyHashedPassword(this, this.PasswordHash, passwordToCheck);
+            return result == PasswordVerificationResult.Success;
+        }
+    }
 }
