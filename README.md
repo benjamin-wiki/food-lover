@@ -1,2 +1,2 @@
 # food lover 🥘 
-A recipe app... how original
+A recipe database with user authetication
